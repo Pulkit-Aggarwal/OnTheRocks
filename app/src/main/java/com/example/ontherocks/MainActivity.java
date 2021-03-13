@@ -19,6 +19,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -29,6 +31,7 @@ import static android.Manifest.*;
 
 public class MainActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    public static CO2data co2Calc = new CO2data();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.stop);
-        TextView distance = findViewById(R.id.distance);
+        final TextView distance = findViewById(R.id.distance);
         TextView co2 = findViewById(R.id.co2);
         TextView cost = findViewById(R.id.cost);
-
+        
         LocationManager locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -71,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -95,3 +100,18 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
+//distance.addTextChangedListener(new TextWatcher() {
+//
+//@Override
+//public void onTextChanged(CharSequence s, int start, int before, int count) {
+//        double result =
+//        co2.setText();
+//        }
+//
+//@Override
+//public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//
+//@Override
+//public void afterTextChanged(Editable s) {}
+//        });
