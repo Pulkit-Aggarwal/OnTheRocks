@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.stop);
         final TextView distance = findViewById(R.id.distance);
-        TextView co2 = findViewById(R.id.co2);
+        final TextView co2 = findViewById(R.id.co2);
         TextView cost = findViewById(R.id.cost);
 
 
@@ -105,21 +105,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-//distance.addTextChangedListener(new TextWatcher() {
-//
-//@Override
-//public void onTextChanged(CharSequence s, int start, int before, int count) {
-//        double result =
-//        co2.setText();
-//        }
-//
-//@Override
-//public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//
-//@Override
-//public void afterTextChanged(Editable s) {}
-//        });
 
     private Location obtainLocation(LocationManager locationManager, locationHandler handler) {
         if (ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
