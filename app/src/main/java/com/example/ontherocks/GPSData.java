@@ -2,6 +2,10 @@ package com.example.ontherocks;
 
 import java.util.ArrayList;
 
+/**
+ * Class used to represent GPS data.
+ * Stores the latitude and longitude.
+ */
 public class GPSData {
     double Latitude;
     double Longitude;
