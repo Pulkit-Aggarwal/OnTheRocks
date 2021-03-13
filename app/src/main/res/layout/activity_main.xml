@@ -61,7 +61,7 @@
         android:layout_gravity="center_horizontal|center_vertical"
         android:translationY="-25dp"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="none" />
 
     <EditText
         android:id="@+id/co2"
@@ -70,7 +70,8 @@
         android:layout_gravity="center_horizontal|center_vertical"
         android:translationY="50dp"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="none"
+        />
 
     <EditText
         android:id="@+id/cost"
@@ -79,6 +80,6 @@
         android:layout_gravity="center_horizontal|center_vertical"
         android:translationY="125dp"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="none" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

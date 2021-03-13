@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.stop);
+        TextView distance = findViewById(R.id.distance);
+        TextView co2 = findViewById(R.id.co2);
+        TextView cost = findViewById(R.id.cost);
 
         LocationManager locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
@@ -56,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
             tv.setText("It was null");
         } else {
             GPSData data = new GPSData(test.getLatitude(), test.getLongitude());
-            tv.setText(data.toString());
+            String dist = data.toString() + " km";
+            distance.setText(dist);
         }
 
 
@@ -67,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
     }
 
     @Override
