@@ -9,4 +9,8 @@
 
     <string name="hello_first_fragment">hello agent 007</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="lat_string">not updated</string>
+    <string name="long_string">not updated</string>
+
+
 </resources>
