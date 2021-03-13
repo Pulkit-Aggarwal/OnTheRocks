@@ -12,7 +12,7 @@ public class GPSData {
     }
 
 
-    public double distance(GPSData a, GPSData b) {
+    public static double distance(GPSData a, GPSData b) {
         double lat1 = Math.toRadians(a.Latitude);
         double lat2 = Math.toRadians(b.Latitude);
         double lon1 = Math.toRadians(a.Longitude);
