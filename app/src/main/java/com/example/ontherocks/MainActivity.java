@@ -47,23 +47,27 @@ public class MainActivity extends AppCompatActivity {
 
         final LocationManager locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
-        final locationHandler locHandler = new locationHandler();
+        final locationHandler handler = new locationHandler();
+        final TextView tv = (TextView) findViewById(R.id.textView2);
 
         final Location[] myLocation = new Location[1];
-        final Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(new Runnable() {
+        final Handler handler2 = new Handler(Looper.getMainLooper());
+
+        handler2.postDelayed(new Runnable() {
             public void run() {
-                myLocation[0] = obtainLocation(locationManager, locHandler);
-                handler.postDelayed(this, HANDLER_DELAY);
+                myLocation[0] = obtainLocation(locationManager, handler);
+                if (myLocation[0] == null) {
+                    tv.setText("It was null");
+                } else {
+                    GPSData data = new GPSData(myLocation[0].getLatitude(), myLocation[0].getLongitude());
+                    GPSData.increment();
+                    String incrementVal = String.valueOf(GPSData.getTotalDistance());
+                    String dist = data.toString();
+                    distance.setText(dist + "\n" + incrementVal);
+                }
+                handler2.postDelayed(this, HANDLER_DELAY);
             }
         }, HANDLER_DELAY);
-        if (myLocation[0] == null) {
-            distance.setText("It was null");
-        } else {
-            GPSData data = new GPSData(myLocation[0].getLatitude(), myLocation[0].getLongitude());
-            String dist = data.toString();
-            distance.setText(dist);
-        }
 
 
         //Find the GPS coords
