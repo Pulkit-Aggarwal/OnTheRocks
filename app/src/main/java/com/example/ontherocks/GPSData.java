@@ -49,6 +49,10 @@ public class GPSData {
         return totalDistance;
     }
 
+    static void increment() {
+        totalDistance++;
+    }
+
     /*public static double getTotalDistance() {
         double currentTotal = 0;
         for (int i = 0; i < coords.size() - 1; i++) {

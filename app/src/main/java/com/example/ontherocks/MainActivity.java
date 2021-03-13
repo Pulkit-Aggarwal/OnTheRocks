@@ -41,31 +41,33 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.stop);
-        TextView distance = findViewById(R.id.distance);
+        final TextView distance = findViewById(R.id.distance);
         TextView co2 = findViewById(R.id.co2);
         TextView cost = findViewById(R.id.cost);
 
         final LocationManager locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
         final locationHandler handler = new locationHandler();
+        final TextView tv = (TextView) findViewById(R.id.textView2);
 
         final Location[] myLocation = new Location[1];
         final Handler handler2 = new Handler(Looper.getMainLooper());
+
         handler2.postDelayed(new Runnable() {
             public void run() {
                 myLocation[0] = obtainLocation(locationManager, handler);
+                if (myLocation[0] == null) {
+                    tv.setText("It was null");
+                } else {
+                    GPSData data = new GPSData(myLocation[0].getLatitude(), myLocation[0].getLongitude());
+                    GPSData.increment();
+                    String incrementVal = String.valueOf(GPSData.getTotalDistance());
+                    String dist = data.toString();
+                    distance.setText(dist + "\n" + incrementVal);
+                }
                 handler2.postDelayed(this, HANDLER_DELAY);
             }
         }, HANDLER_DELAY);
-        TextView tv = (TextView) findViewById(R.id.textView2);
-        tv.setText("aaaaaaa");
-        if (myLocation[0] == null) {
-            tv.setText("It was null");
-        } else {
-            GPSData data = new GPSData(myLocation[0].getLatitude(), myLocation[0].getLongitude());
-            String dist = data.toString();
-            distance.setText(dist);
-        }
 
 
         //Find the GPS coords
