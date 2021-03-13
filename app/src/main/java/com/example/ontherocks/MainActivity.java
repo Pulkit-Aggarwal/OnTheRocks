@@ -29,6 +29,8 @@ import static android.Manifest.*;
 
 public class MainActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    private static final int GPS_TIME_INTERVAL = 1000;
+    private static final int HANDLER_DELAY = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         TextView co2 = findViewById(R.id.co2);
         TextView cost = findViewById(R.id.cost);
 
+
+
         LocationManager locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION, permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
         }
         locationHandler handler = new locationHandler();
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) handler);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GPS_TIME_INTERVAL, 0, (LocationListener) handler);
         Location test = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         TextView tv = (TextView) findViewById(R.id.textView2);
         if (test == null) {
@@ -63,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
             distance.setText(dist);
         }
 
+
+        //Find the GPS coords
+        //tv.setText with the GPS coordinates
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,4 +101,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
