@@ -47,20 +47,18 @@ public class MainActivity extends AppCompatActivity {
 
         final LocationManager locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
-        final locationHandler handler = new locationHandler();
+        final locationHandler locHandler = new locationHandler();
 
         final Location[] myLocation = new Location[1];
-        final Handler handler2 = new Handler(Looper.getMainLooper());
-        handler2.postDelayed(new Runnable() {
+        final Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
             public void run() {
-                myLocation[0] = obtainLocation(locationManager, handler);
-                handler2.postDelayed(this, HANDLER_DELAY);
+                myLocation[0] = obtainLocation(locationManager, locHandler);
+                handler.postDelayed(this, HANDLER_DELAY);
             }
         }, HANDLER_DELAY);
-        TextView tv = (TextView) findViewById(R.id.textView2);
-        tv.setText("aaaaaaa");
         if (myLocation[0] == null) {
-            tv.setText("It was null");
+            distance.setText("It was null");
         } else {
             GPSData data = new GPSData(myLocation[0].getLatitude(), myLocation[0].getLongitude());
             String dist = data.toString();
