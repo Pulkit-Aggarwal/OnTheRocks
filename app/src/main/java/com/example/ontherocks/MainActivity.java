@@ -25,6 +25,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import static android.Manifest.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.stop);
         final TextView distance = findViewById(R.id.distance);
         final TextView co2 = findViewById(R.id.co2);
-        TextView cost = findViewById(R.id.cost);
-
+        final TextView cost = findViewById(R.id.cost);
 
         final LocationManager locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
@@ -59,11 +63,32 @@ public class MainActivity extends AppCompatActivity {
                 if (myLocation[0] == null) {
                     tv.setText("It was null");
                 } else {
+                    //The construction of GPSData object actually updates totalDistance
                     GPSData data = new GPSData(myLocation[0].getLatitude(), myLocation[0].getLongitude());
-                    GPSData.increment();
-                    String incrementVal = String.valueOf(GPSData.getTotalDistance());
-                    String dist = data.toString();
-                    distance.setText(dist + "\n" + incrementVal);
+                    //GPSData.increment();
+                    //String incrementVal = String.valueOf(GPSData.getTotalDistance());
+
+                    //Figure out distance
+                    String coord = data.toString();
+                    double totalDistance = GPSData.getTotalDistance();
+                    String totalDistanceStr = String.valueOf(totalDistance);
+
+                    //Figure out co2 using distance
+                    double co2Emission = CO2data.carEmission(totalDistance);
+                    String co2String = String.valueOf(co2Emission);
+
+                    //Figure out cost using co2
+                    double co2Cost = CO2data.cost(co2Emission);
+                    Locale locale = new Locale("en", "GB");
+                    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(locale);
+                    //BigDecimal bd = new BigDecimal(co2Cost);
+                    //bd = bd.round(new MathContext(2));
+                    String costString = numberFormat.format(co2Cost);
+
+                    distance.setText(coord + "\n" + totalDistanceStr);
+                    co2.setText(co2String);
+                    cost.setText(costString);
+
                 }
                 handler2.postDelayed(this, HANDLER_DELAY);
             }
