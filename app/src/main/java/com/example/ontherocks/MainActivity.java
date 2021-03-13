@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
             // for ActivityCompat#requestPermissions for more details.
             ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION, permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
             TextView tv = (TextView) findViewById(R.id.textView2);
-            tv.setText("Accept the permissions retard");
         }
         locationHandler handler = new locationHandler();
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) handler);
@@ -60,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         if (test == null) {
             tv.setText("It was null");
         } else {
-            test2 = test.toString();
-            tv.setText(test2);
+            GPSData data = new GPSData(test.getLatitude(), test.getLongitude());
+            tv.setText(data.toString());
         }
 
 
