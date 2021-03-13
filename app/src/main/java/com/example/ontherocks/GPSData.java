@@ -69,6 +69,6 @@ public class GPSData {
 
     @Override
     public String toString() {
-        return "Latitude: " + Latitude + " " + "Longitude" + Longitude;
+        return "Latitude: " + Latitude + " " + "Longitude: " + Longitude;
     }
 }
