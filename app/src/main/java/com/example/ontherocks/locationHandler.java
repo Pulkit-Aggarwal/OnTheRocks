@@ -21,23 +21,21 @@ public class locationHandler implements LocationListener {
 
     private Context Context;
 
+    // We might need to use this.
     @Override
     public void onLocationChanged(Location loc) {
 
     }
 
+    // Unused
     @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
+    public void onStatusChanged(String s, int i, Bundle bundle) {}
 
-    }
-
+    // Unused
     @Override
-    public void onProviderEnabled(String s) {
+    public void onProviderEnabled(String s) {}
 
-    }
-
+    // Unused
     @Override
-    public void onProviderDisabled(String s) {
-
-    }
+    public void onProviderDisabled(String s) {}
 }

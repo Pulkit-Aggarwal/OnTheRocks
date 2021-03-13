@@ -6,7 +6,6 @@ public class GPSData {
     double Latitude;
     double Longitude;
 
-
     public GPSData(double Latitude, double longitude) {
         this.Latitude = Latitude;
         this.Longitude = longitude;
