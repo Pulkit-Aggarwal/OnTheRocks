@@ -1,5 +1,4 @@
 package com.example.ontherocks;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,18 +8,17 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -32,6 +30,8 @@ import static android.Manifest.*;
 public class MainActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     public static CO2data co2Calc = new CO2data();
+    private static final int GPS_TIME_INTERVAL = 1000;
+    private static final int HANDLER_DELAY = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,29 +43,33 @@ public class MainActivity extends AppCompatActivity {
         final TextView distance = findViewById(R.id.distance);
         TextView co2 = findViewById(R.id.co2);
         TextView cost = findViewById(R.id.cost);
-        
-        LocationManager locationManager = (LocationManager)
+
+
+        final LocationManager locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION, permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
-        }
-        locationHandler handler = new locationHandler();
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) handler);
-        Location test = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        final locationHandler handler = new locationHandler();
+
+        final Location[] myLocation = new Location[1];
+        final Handler handler2 = new Handler(Looper.getMainLooper());
+        handler2.postDelayed(new Runnable() {
+            public void run() {
+                myLocation[0] = obtainLocation(locationManager, handler);
+                handler2.postDelayed(this, HANDLER_DELAY);
+            }
+        }, HANDLER_DELAY);
         TextView tv = (TextView) findViewById(R.id.textView2);
-        if (test == null) {
+        tv.setText("aaaaaaa");
+        if (myLocation[0] == null) {
             tv.setText("It was null");
         } else {
-            GPSData data = new GPSData(test.getLatitude(), test.getLongitude());
-            String dist = data.toString() + " km";
+            GPSData data = new GPSData(myLocation[0].getLatitude(), myLocation[0].getLongitude());
+            String dist = data.toString();
             distance.setText(dist);
         }
 
+
+        //Find the GPS coords
+        //tv.setText with the GPS coordinates
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-}
 
 //distance.addTextChangedListener(new TextWatcher() {
 //
@@ -115,3 +118,22 @@ public class MainActivity extends AppCompatActivity {
 //@Override
 //public void afterTextChanged(Editable s) {}
 //        });
+
+    private Location obtainLocation(LocationManager locationManager, locationHandler handler) {
+        if (ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            ActivityCompat.requestPermissions(this, new String[]{permission.ACCESS_FINE_LOCATION, permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
+            //onRequestPermissionsResult(MY_PERMISSIONS_REQUEST_LOCATION, new String[]{permission.ACCESS_FINE_LOCATION, permission.ACCESS_COARSE_LOCATION} );
+        }
+        Location test = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (true) { // I'm not a coward
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                        GPS_TIME_INTERVAL, 0, handler);
+            }
+        return test;
+        }
+}
