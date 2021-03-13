@@ -32,7 +32,6 @@
         layout="@layout/content_main"
         android:layout_width="123dp"
         android:layout_height="232dp" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -41,14 +40,31 @@
         android:translationX="500px"
         android:translationY="1500px" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/start"
+    <EditText
+        android:id="@+id/distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:layout_gravity="bottom"
-        android:clickable="true"
-        android:focusable="true"
-        app:srcCompat="@android:drawable/ic_media_play" />
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:translationY="-25dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/co2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:translationY="50dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:translationY="100dp"
+        android:ems="10"
+        android:inputType="number" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
