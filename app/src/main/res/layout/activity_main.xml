@@ -104,7 +104,7 @@
         />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/green"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
@@ -112,5 +112,16 @@
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
         app:srcCompat="@drawable/bicycle" />
+
+    <ImageButton
+        android:id="@+id/train"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:layout_gravity="bottom"
+        android:translationX="125dp"
+        android:maxHeight="125dp"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/cf584aff36fb87c055a8a026bfcb859e" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
