@@ -14,6 +14,7 @@
     <string name="dist_lbl">Distance</string>
     <string name="co2_lbl">CO2</string>
     <string name="cost_lbl">Cost</string>
+    <string name="donate_text" ><a href="https://carbonfund.org">Offset your co2</a></string>
 
     <color name="teal">#94dada</color>
     <color name="white">#ffffff</color>

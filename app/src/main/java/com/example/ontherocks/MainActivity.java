@@ -23,6 +23,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView distance = findViewById(R.id.distance);
         final TextView co2 = findViewById(R.id.co2);
         final TextView cost = findViewById(R.id.cost);
+        TextView donate = (TextView)findViewById(R.id.donateLink);
 
         final LocationManager locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
@@ -101,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
                 handler2.postDelayed(this, HANDLER_DELAY);
             }
         }, HANDLER_DELAY);
+
+        donate.setMovementMethod(LinkMovementMethod.getInstance());
+
     }
 
 
