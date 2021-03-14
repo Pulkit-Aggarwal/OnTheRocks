@@ -112,6 +112,7 @@
         android:translationX="-70dp"
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
+        android:onClick="changeTransport_green"
         app:srcCompat="@drawable/bicycle" />
 
     <ImageButton
@@ -123,6 +124,7 @@
         android:translationX="70dp"
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
+        android:onClick="changeTransport_train"
         app:srcCompat="@drawable/cf584aff36fb87c055a8a026bfcb859e" />
 
     <ImageButton
@@ -135,6 +137,7 @@
         android:translationY="-150dp"
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
+        android:onClick="changeTransport_bus"
         app:srcCompat="@drawable/a5dddcd57650ff323b969a3cdf16e9ff" />
 
     <ImageButton
@@ -147,6 +150,7 @@
         android:translationY="-150dp"
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
+        android:onClick="changeTransport_car"
         app:srcCompat="@drawable/cg181bh" />
 
     <ImageView

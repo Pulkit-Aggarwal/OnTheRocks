@@ -1,4 +1,5 @@
 package com.example.ontherocks;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,13 +9,16 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.os.Handler;
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public static CO2data co2Calc = new CO2data();
     private static final int GPS_TIME_INTERVAL = 1000;
     private static final int HANDLER_DELAY = 1000;
+    private static String transportType = "car";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +73,11 @@ public class MainActivity extends AppCompatActivity {
                     //String incrementVal = String.valueOf(GPSData.getTotalDistance());
 
                     //Figure out distance
-                    String coord = data.toString();
                     double totalDistance = GPSData.getTotalDistance();
-                    String totalDistanceStr = String.valueOf(totalDistance);
+                    String totalDistanceStr = String.valueOf(totalDistance) + "km";
 
                     //Figure out co2 using distance
-                    double co2Emission = CO2data.carEmission(totalDistance);
+                    double co2Emission = CO2data.emissionRate(transportType, totalDistance);
                     String co2String = String.valueOf(co2Emission);
 
                     //Figure out cost using co2
@@ -83,10 +87,9 @@ public class MainActivity extends AppCompatActivity {
                     //BigDecimal bd = new BigDecimal(co2Cost);
                     //bd = bd.round(new MathContext(2));
                     String costString = numberFormat.format(co2Cost);
-                    String distanceStr = coord + "\n" + totalDistanceStr + " km";
                     String co2Str = co2String + " kg";
 
-                    distance.setText(distanceStr);
+                    distance.setText(totalDistanceStr);
                     co2.setText(co2Str);
                     cost.setText(costString);
 
@@ -131,9 +134,26 @@ public class MainActivity extends AppCompatActivity {
         }
         Location test = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (true) { // I'm not a coward
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                        GPS_TIME_INTERVAL, 0, handler);
-            }
-        return test;
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                    GPS_TIME_INTERVAL, 0, handler);
         }
+        return test;
+    }
+
+    public void changeTransport_car(View view) {
+        transportType = "car";
+    }
+
+    public void changeTransport_bus(View view) {
+        transportType = "bus";
+    }
+
+    public void changeTransport_train(View view) {
+        transportType = "train";
+    }
+
+    public void changeTransport_green(View view) {
+        transportType = "green";
+    }
+
 }
