@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.stop);
         final TextView distance = findViewById(R.id.distance);
         final TextView co2 = findViewById(R.id.co2);
         final TextView cost = findViewById(R.id.cost);
@@ -84,28 +83,17 @@ public class MainActivity extends AppCompatActivity {
                     //BigDecimal bd = new BigDecimal(co2Cost);
                     //bd = bd.round(new MathContext(2));
                     String costString = numberFormat.format(co2Cost);
+                    String distanceStr = coord + "\n" + totalDistanceStr + " km";
+                    String co2Str = co2String + " kg";
 
-                    distance.setText(coord + "\n" + totalDistanceStr);
-                    co2.setText(co2String);
+                    distance.setText(distanceStr);
+                    co2.setText(co2Str);
                     cost.setText(costString);
 
                 }
                 handler2.postDelayed(this, HANDLER_DELAY);
             }
         }, HANDLER_DELAY);
-
-
-        //Find the GPS coords
-        //tv.setText with the GPS coordinates
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
     }
 
 

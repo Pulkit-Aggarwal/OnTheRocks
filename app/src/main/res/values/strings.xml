@@ -11,6 +11,9 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="lat_string">not updated</string>
     <string name="long_string">not updated</string>
+    <string name="dist_lbl">Distance</string>
+    <string name="co2_lbl">CO2</string>
+    <string name="cost_lbl">Cost</string>
 
 
 </resources>

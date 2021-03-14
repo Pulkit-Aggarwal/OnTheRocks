@@ -20,22 +20,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/btn_dialog" />
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_main"
-        android:layout_width="123dp"
-        android:layout_height="232dp"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="bottom|center" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -45,13 +29,41 @@
         android:translationY="1500dp" />
 
     <EditText
+        android:id="@+id/distance_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:translationY="-100dp"
+        android:translationX="-125dp"
+        android:ems="4"
+        android:inputType="text"
+        android:text="@string/dist_lbl"
+        android:focusable="false"
+        />
+
+    <EditText
         android:id="@+id/distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:translationY="-25dp"
+        android:translationY="-100dp"
+        android:translationX="50dp"
         android:ems="10"
         android:inputType="text"
+        android:focusable="false"
+        />
+
+    <EditText
+        android:id="@+id/co2_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:translationY="-25dp"
+        android:translationX="-125dp"
+        android:ems="3"
+        android:inputType="text"
+        android:text="@string/co2_lbl"
+        android:focusable="false"
         />
 
     <EditText
@@ -59,9 +71,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:translationY="50dp"
+        android:translationY="-25dp"
+        android:translationX="50dp"
         android:ems="10"
         android:inputType="text"
+        android:focusable="false"
+        />
+
+    <EditText
+        android:id="@+id/cost_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:translationY="50dp"
+        android:translationX="-125dp"
+        android:ems="3"
+        android:inputType="text"
+        android:text="@string/cost_lbl"
+        android:focusable="false"
         />
 
     <EditText
@@ -69,8 +96,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:translationY="125dp"
+        android:translationY="50dp"
+        android:translationX="50dp"
         android:ems="10"
-        android:inputType="text" />
+        android:inputType="text"
+        android:focusable="false"
+        />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:layout_gravity="bottom"
+        android:maxHeight="125dp"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/bicycle" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
