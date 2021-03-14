@@ -45,7 +45,7 @@
         android:id="@+id/distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:translationY="-100dp"
         android:translationX="50dp"
         android:ems="10"
@@ -112,6 +112,5 @@
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
         app:srcCompat="@drawable/bicycle" />
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
