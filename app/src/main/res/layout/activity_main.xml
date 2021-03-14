@@ -108,9 +108,11 @@
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:layout_gravity="bottom"
+        android:layout_gravity="bottom|center"
+        android:translationX="-70dp"
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
+        android:onClick="changeTransport_green"
         app:srcCompat="@drawable/bicycle" />
 
     <ImageButton
@@ -118,10 +120,48 @@
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:layout_gravity="bottom"
-        android:translationX="125dp"
+        android:layout_gravity="bottom|center"
+        android:translationX="70dp"
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
+        android:onClick="changeTransport_train"
         app:srcCompat="@drawable/cf584aff36fb87c055a8a026bfcb859e" />
+
+    <ImageButton
+        android:id="@+id/bus"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:layout_gravity="bottom|center"
+        android:translationX="-70dp"
+        android:translationY="-150dp"
+        android:maxHeight="125dp"
+        android:adjustViewBounds="true"
+        android:onClick="changeTransport_bus"
+        app:srcCompat="@drawable/a5dddcd57650ff323b969a3cdf16e9ff" />
+
+    <ImageButton
+        android:id="@+id/car"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:layout_gravity="bottom|center"
+        android:translationX="70dp"
+        android:translationY="-150dp"
+        android:maxHeight="125dp"
+        android:adjustViewBounds="true"
+        android:onClick="changeTransport_car"
+        app:srcCompat="@drawable/cg181bh" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:layout_gravity="top|center"
+        android:translationY="100dp"
+        android:maxHeight="125dp"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/sneak" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
