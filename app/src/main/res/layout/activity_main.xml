@@ -149,15 +149,4 @@
         android:adjustViewBounds="true"
         app:srcCompat="@drawable/cg181bh" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:layout_gravity="top|center"
-        android:translationY="90dp"
-        android:maxHeight="125dp"
-        android:adjustViewBounds="true"
-        app:srcCompat="@drawable/cg007bh" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

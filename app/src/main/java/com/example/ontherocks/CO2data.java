@@ -18,7 +18,7 @@ public class CO2data {
             case "train":
                 return trainEmission(dist);
             default:
-                return 0.00; // Error handler
+                return 0.00; // Error handler or peoples
         }
     }
 
