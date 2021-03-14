@@ -40,8 +40,8 @@ import static android.Manifest.*;
 public class MainActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     public static CO2data co2Calc = new CO2data();
-    private static final int GPS_TIME_INTERVAL = 1000;
-    private static final int HANDLER_DELAY = 1000;
+    private static final int GPS_TIME_INTERVAL = 30000;
+    private static final int HANDLER_DELAY = 30000;
     private static String transportType = "car";
 
     @Override
