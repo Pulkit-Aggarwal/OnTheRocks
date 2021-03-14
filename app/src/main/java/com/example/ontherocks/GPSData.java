@@ -55,7 +55,7 @@ public class GPSData {
         // for Kilometers. For miles use 3956
         double r = 6371;
 
-        return(c * r) + 2;
+        return(c * r);
     }
 
     public static double getTotalDistance() {
