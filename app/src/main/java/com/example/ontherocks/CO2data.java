@@ -9,6 +9,19 @@ public class CO2data {
     //Rate per tonne of c02
     final static double rate = 80;
 
+    public static double emissionRate(String type, double dist) {
+        switch (type) {
+            case "car":
+                return carEmission(dist);
+            case "bus":
+                return busEmission(dist);
+            case "train":
+                return trainEmission(dist);
+            default:
+                return 0.00; // Error handler
+        }
+    }
+
     // in kg
     public static double carEmission (double dist) {
         return dist*kmtomiles*car;
