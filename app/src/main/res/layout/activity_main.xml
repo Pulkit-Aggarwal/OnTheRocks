@@ -114,6 +114,7 @@
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
         android:onClick="changeTransport_green"
+        android:background="@color/teal"
         app:srcCompat="@drawable/bicycle" />
 
     <ImageButton
@@ -126,6 +127,7 @@
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
         android:onClick="changeTransport_train"
+        android:background="@color/teal"
         app:srcCompat="@drawable/cf584aff36fb87c055a8a026bfcb859e" />
 
     <ImageButton
@@ -139,6 +141,7 @@
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
         android:onClick="changeTransport_bus"
+        android:background="@color/teal"
         app:srcCompat="@drawable/a5dddcd57650ff323b969a3cdf16e9ff" />
 
     <ImageButton
@@ -152,6 +155,7 @@
         android:maxHeight="125dp"
         android:adjustViewBounds="true"
         android:onClick="changeTransport_car"
+        android:background="@color/teal"
         app:srcCompat="@drawable/cg181bh" />
 
     <ImageView

@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     //BigDecimal bd = new BigDecimal(co2Cost);
                     //bd = bd.round(new MathContext(2));
                     String costString = numberFormat.format(co2Cost);
-                    String co2Str = co2String + " kg of CO2";
+                    String co2Str = co2String + " kg";
 
                     distance.setText(totalDistanceStr);
                     co2.setText(co2Str);

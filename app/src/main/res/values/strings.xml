@@ -15,7 +15,9 @@
     <string name="co2_lbl">CO2</string>
     <string name="cost_lbl">Cost</string>
 
-    <color name="teal">#edffff</color>
+    <color name="teal">#94dada</color>
+    <color name="white">#ffffff</color>
+
 
 
 </resources>

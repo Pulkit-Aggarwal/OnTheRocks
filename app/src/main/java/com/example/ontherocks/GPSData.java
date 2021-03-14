@@ -1,6 +1,8 @@
 package com.example.ontherocks;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Class used to represent GPS data.
@@ -9,17 +11,28 @@ import java.util.ArrayList;
 public class GPSData {
     private double Latitude;
     private double Longitude;
+    private long timeStamp;
 
     private static double totalDistance = 0;
     private static GPSData prevCoord;
 
-    //private static ArrayList<GPSData> coords = new ArrayList<>();
+    private static LinkedList<GPSData> coords = new LinkedList<>();
 
     public GPSData(double Latitude, double longitude) {
         this.Latitude = Latitude;
         this.Longitude = longitude;
+        this.timeStamp = System.currentTimeMillis();
+
+
         //coords.add(this);
         if (prevCoord != null) {
+            coords.add(this);
+            if (System.currentTimeMillis() > coords.get(0).timeStamp + 86400000) {
+                //find the distance between 0 and 1, remove from totalDistance
+                double distanceToRemove = distance(coords.get(0), coords.get(1));
+                totalDistance -= distanceToRemove;
+                coords.remove(0);
+            }
             totalDistance += distance(prevCoord, this);
         }
         prevCoord = this;
@@ -42,7 +55,7 @@ public class GPSData {
         // for Kilometers. For miles use 3956
         double r = 6371;
 
-        return(c * r);
+        return(c * r) + 2;
     }
 
     public static double getTotalDistance() {
