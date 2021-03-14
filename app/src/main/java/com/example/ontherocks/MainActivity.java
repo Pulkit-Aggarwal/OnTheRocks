@@ -74,11 +74,15 @@ public class MainActivity extends AppCompatActivity {
 
                     //Figure out distance
                     double totalDistance = GPSData.getTotalDistance();
-                    String totalDistanceStr = String.valueOf(totalDistance) + "km";
+                    BigDecimal bdTotalDistance = new BigDecimal(totalDistance);
+                    bdTotalDistance = bdTotalDistance.round(new MathContext(4));
+                    String totalDistanceStr = bdTotalDistance.toString() + "km";
 
                     //Figure out co2 using distance
                     double co2Emission = CO2data.emissionRate(transportType, totalDistance);
-                    String co2String = String.valueOf(co2Emission);
+                    BigDecimal bdEmission = new BigDecimal(co2Emission);
+                    bdEmission = bdEmission.round(new MathContext(4));
+                    String co2String = bdEmission.toString();
 
                     //Figure out cost using co2
                     double co2Cost = CO2data.cost(co2Emission);
@@ -87,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     //BigDecimal bd = new BigDecimal(co2Cost);
                     //bd = bd.round(new MathContext(2));
                     String costString = numberFormat.format(co2Cost);
-                    String co2Str = co2String + " kg";
+                    String co2Str = co2String + " kg of CO2";
 
                     distance.setText(totalDistanceStr);
                     co2.setText(co2Str);

@@ -20,7 +20,7 @@ public class GPSData {
         this.Longitude = longitude;
         //coords.add(this);
         if (prevCoord != null) {
-            totalDistance += distance(prevCoord, this) + 2;
+            totalDistance += distance(prevCoord, this);
         }
         prevCoord = this;
     }
